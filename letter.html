@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>팬레터 페이지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            padding: 0rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 1rem;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('brick.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        main::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        main > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        section.contact {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        section.contact .contact-me {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        section.contact .contact-me .right {
+            width: 100%;
+        }
+
+        section.contact .contact-me .right .description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        section.contact .contact-me .right .description h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        section.contact .contact-me .right .description p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        section.contact .contact-me .right .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        section.contact .contact-me .right .form-group label {
+            display: block;
+            margin-bottom: 0.85rem;
+        }
+
+        section.contact .contact-me .right .form-group input,
+        section.contact .contact-me .right .form-group textarea {
+            padding: 0.625rem;
+            width: 100%;
+            outline: none;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        section.contact .contact-me .right .form-group input:focus,
+        section.contact .contact-me .right .form-group textarea:focus {
+            border: 1px solid #719ECE;
+            box-shadow: 0 0 10px #719ECE;
+        }
+
+        section.contact .contact-me .right button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #f78b00;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        section.contact .contact-me .right button:hover {
+            background-color: #e67e22;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 0rem;
+        }
+
+        /* 모달 팝업창 CSS */
+        .modal {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed;
+            z-index: 100; /* 다른 요소 위에 표시 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* 배경 어둡게 */
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto; /* 페이지 중앙에 배치 */
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 50%;
+            height: auto;
+        }
+
+        .modal-content button {
+            padding: 0.5rem 1rem;
+            background-color: #f78b00;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .modal-content button:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><img src='logo1.jpg'></a>
+    </header>
+
+    <nav>
+        <a href='profile.html'>PROFILE</a>
+        <a href='schedule.html'>SCHEDULE</a>
+        <a href='news.html'>NEWS</a>
+        <a href='mv.html'>VIDEO</a>
+        <a href='letter.html'>LETTER</a>
+    </nav>
+
+    <main>
+        <h1 style="text-align:center; margin-bottom: 20px;">Love letter</h1>
+        
+        <section class="contact">
+            <div class="contact-me">
+                <div class="right">
+                    <!-- 설명 텍스트를 입력 폼 위로 이동 -->
+                    <div class="description">
+                        <h3>편지를 작성하세요!</h3>
+                        <p>이곳에서 작성하고 보내주세요.</p>
+                    </div>
+                    <form id="letterForm">
+                        <div class="form-group">
+                            <label for="name">이름</label>
+                            <input type="text" id="name" placeholder="당신의 이름을 입력하세요" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" placeholder="이메일 주소를 입력하세요" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">메시지</label>
+                            <textarea id="message" placeholder="팬레터를 작성하세요" required></textarea>
+                        </div>
+                        <button type="submit">편지 보내기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2024. 22461019 김민서</p>
+    </footer>
+
+    <!-- 커스텀 모달 팝업창 -->
+    <div id="letterModal" class="modal">
+        <div class="modal-content">
+            <img src="letter.png" alt="성공 이미지"> <!-- 이미지 추가 -->
+            <p>팬레터가 성공적으로 발송되었습니다!</p>
+            <button id="closeModal">확인</button>
+        </div>
+    </div>
+
+    <!-- JavaScript 추가 -->
+    <script>
+        // 폼 제출 이벤트 리스너
+        document.getElementById("letterForm").addEventListener("submit", function(event){
+            event.preventDefault(); // 폼 제출 기본 동작 방지
+
+            // 팝업창 표시
+            document.getElementById("letterModal").style.display = "block";
+        });
+
+        // 팝업창 닫기 버튼
+        document.getElementById("closeModal").addEventListener("click", function() {
+            document.getElementById("letterModal").style.display = "none";
+            document.getElementById("letterForm").reset(); // 폼 초기화
+        });
+    </script>
+
+    <!-- Font Awesome CDN (아이콘 사용을 위한 링크) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
