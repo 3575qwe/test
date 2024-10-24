@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>프로필 페이지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            padding: 0rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 1rem;
+            background-image: url('brick.jpg'); /* 배경 이미지 URL */
+            background-size: cover; /* 배경 이미지를 요소 크기에 맞게 조정 */
+            background-repeat: no-repeat; /* 배경 이미지 반복하지 않기 */
+            background-position: center; /* 배경 이미지를 중앙에 위치 */
+            margin: 0rem;
+        }
+
+        /* 갤러리 컨테이너 설정 */
+        .gallery-container {
+            padding: 20px;
+            display: grid; /* Grid 레이아웃 사용 */
+            grid-template-columns: repeat(3, 1fr); /* 3개의 열로 설정 */
+            gap: 15px; /* 갤러리 아이템 사이의 간격 */
+            justify-items: center; /* 중앙 정렬 추가 */
+            max-width: 1200px; /* 최대 너비 설정 */
+            margin: 0 auto; /* 중앙 정렬을 위한 마진 */
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s ease, transform 0.3s ease; /* 이미지 전환 효과 */
+            text-align: center;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.7; /* 호버 시 이미지 투명도 조절 */
+            transform: scale(1.05); /* 호버 시 약간 확대 */
+            text-align: center;
+        }
+
+        /* 텍스트가 호버 시 나타나도록 설정 */
+        .gallery-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-text {
+            opacity: 1; /* 호버 시 텍스트 보이게 */
+        }
+
+        /* 모달(팝업) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 800px; /* 최대 너비 설정 */
+            padding: 20px;
+            text-align: center; /* 이미지 중앙 정렬 */
+        }
+
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 0rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><img src='logo1.jpg'></a>
+    </header>
+
+    <nav>
+        <a href='profile.html'>PROFILE</a>
+        <a href='schedule.html'>SCHEDULE</a>
+        <a href='news.html'>NEWS</a>
+        <a href='mv.html'>VIDEO</a>
+        <a href='letter.html'>LETTER</a>
+    </nav>
+
+    <main>
+        <!-- 이미지 갤러리 -->
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="ant.jpg" alt="갤러리 이미지 1" onclick="openModal(this)">
+                <div class="gallery-text">Anton <br>2004. 03. 21.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="won.jpg" alt="갤러리 이미지 2" onclick="openModal(this)">
+                <div class="gallery-text">Wonbin <br>2002. 03. 02.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sohee.jpg" alt="갤러리 이미지 3" onclick="openModal(this)">
+                <div class="gallery-text">Sohee <br>2003. 11. 21.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sung.jpg" alt="갤러리 이미지 4" onclick="openModal(this)">
+                <div class="gallery-text">Sungchan <br>2001. 09. 13.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="eun.jpg" alt="갤러리 이미지 5" onclick="openModal(this)">
+                <div class="gallery-text">Eunseok <br>2001. 03. 19.</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sho.jpg" alt="갤러리 이미지 6" onclick="openModal(this)">
+                <div class="gallery-text">Shotaro <br>2000. 11. 25.</div>
+            </div>
+        </div>
+
+        <!-- 이미지 확대를 위한 모달 -->
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img id="modal-image" src="">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2024. 22461019 김민서</p>
+    </footer>
+
+    <script>
+        // 모달 열기
+        function openModal(image) {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("modal-image").src = image.src;
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
