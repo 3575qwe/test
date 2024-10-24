@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>스케줄 페이지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            padding: 0rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 1rem;
+            background-image: url('brick.jpg'); /* 배경 이미지 URL */
+            background-size: cover; /* 배경 이미지 크기 조정 */
+            background-repeat: no-repeat; /* 배경 이미지 반복하지 않기 */
+            background-position: center; /* 배경 이미지 중앙 정렬 */
+            margin: 0rem;
+        }
+
+        /* 달력 스타일 */
+        .calendar {
+            display: grid; /* Grid 레이아웃 사용 */
+            grid-template-columns: repeat(7, 1fr); /* 7개의 열로 설정 */
+            gap: 0; /* 셀 사이의 간격을 0으로 설정 */
+            max-width: 1200px; /* 최대 너비 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            background: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+            border-radius: 10px; /* 모서리 둥글게 설정 */
+            overflow: hidden; /* 둥글게 자른 부분이 잘리도록 설정 */
+        }
+
+        .day {
+            border: 1px solid #333; /* 셀 경계 색상 */
+            padding: 10px; /* 셀 안쪽 여백 */
+            text-align: center; /* 중앙 정렬 */
+            position: relative; /* 상대 위치 설정 */
+            height: 100px; /* 각 날짜 셀의 높이 */
+        }
+
+        .day-header {
+            background: #444; /* 요일 헤더 배경 색상 */
+            color: #fff; /* 글자 색상 */
+            padding: 5px 0; /* 패딩 */
+            font-weight: bold; /* 글자 두께 */
+        }
+
+        .month-year {
+            grid-column: span 7; /* 모든 열을 span */
+            text-align: center; /* 중앙 정렬 */
+            font-size: 1.5rem; /* 글자 크기 */
+            padding: 10px; /* 패딩 */
+            background: #666; /* 배경 색상 */
+            color: #fff; /* 글자 색상 */
+        }
+
+        footer {
+            background: #333; /* 푸터 배경 색상 */
+            color: #fff; /* 글자 색상 */
+            text-align: center; /* 중앙 정렬 */
+            padding: 1rem; /* 패딩 */
+            margin-top: 0rem; /* 위쪽 여백 */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><img src='logo1.jpg'></a>
+    </header>
+
+    <nav>
+        <a href='profile.html'>PROFILE</a>
+        <a href='schedule.html'>SCHEDULE</a>
+        <a href='news.html'>NEWS</a>
+        <a href='mv.html'>VIDEO</a>
+        <a href='letter.html'>LETTER</a>
+    </nav>
+
+    <main>
+        <h1 style="text-align:center; margin-bottom: 20px;">Schedule Calendar</h1>
+        <div class="calendar">
+            <div class="month-year">04.2024</div> <!-- 달력 제목 -->
+            <div class="day day-header">Sun</div>
+            <div class="day day-header">Mon</div>
+            <div class="day day-header">Tue</div>
+            <div class="day day-header">Wed</div>
+            <div class="day day-header">Thu</div>
+            <div class="day day-header">Fri</div>
+            <div class="day day-header">Sat</div>
+
+            <!-- 달력 날짜 -->
+            <div class="day"></div> <!-- 빈 칸 (일요일) -->
+            <div class="day"></div> <!-- 빈 칸 (월요일) -->
+            <div class="day">1<br><span>에버라인 대면팬싸</span></div> <!-- 화요일 -->
+            <div class="day">2</div>
+            <div class="day">3<br><span>에버랜드X라이즈</span></div>
+            <div class="day">4<br><span>KNPOPS 대면팬싸</span></div>
+            <div class="day">5<br><span>애플뮤직 대면팬싸</span></div>
+            <div class="day">6<br><span>부산 락페스티벌</span></div>
+            <div class="day">7</div>
+            <div class="day">8<br><span>ALLMD 영통팬싸</span></div>
+            <div class="day">9<br><span>인터아시아 대면팬싸</span></div>
+            <div class="day">10<br><span>✈️한국→아부다비</span></div>
+            <div class="day">11<br><span>✈️아부다비→마드리드</span></div>
+            <div class="day">12<br><span>뮤직뱅크in마드리드</span></div>
+            <div class="day">13<br><span>✈️마드리드→아부다비</span></div>
+            <div class="day">14<br><span>✈️아부다비→한국</span></div>
+            <div class="day">15<br><span>✈️한국→일본 <Lucky>스케줄</span></div>
+            <div class="day">16<br><span>The blue happy festival</span></div>
+            <div class="day">17<br><span>✈️일본→광저우</span></div>
+            <div class="day">18<br><span>상하이</span></div>
+            <div class="day">19</div>
+            <div class="day">20<br><span>에스엠스토어 대면팬싸</span></div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day">27<br><span>케이타운포유 대면팬싸</span></div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+            <div class="day">31</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2024. 22461019 김민서</p>
+    </footer>
+
+</body>
+</html>
